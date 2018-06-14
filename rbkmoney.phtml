@@ -1,0 +1,16 @@
+<form action="<?= $variables['purchasing']['formAction'] ?>" name="pay_form" method="GET">
+    <input type="hidden" name="orderId" value="<?= $variables['purchasing']['orderId'] ?>">
+    <input type="hidden" name="paySystem" value="<?= $variables['purchasing']['paymentSystem'] ?>">
+    <script src="<?= $variables['purchasing']['checkoutUrl'] ?>" class="rbkmoney-checkout"
+            data-payment-flow-hold="<?= $variables['purchasing']['holdType'] ?>"
+            data-obscure-card-cvv="<?= $variables['purchasing']['shadingCvv'] ?>"
+            data-popup-mode="true"
+            data-require-card-holder="<?= $variables['purchasing']['requireCardHolder'] ?>"
+            <?= $variables['purchasing']['holdExpiration'] ?>
+            data-name="<?= $variables['purchasing']['product'] ?>"
+            data-email="<?= $variables['purchasing']['userEmail'] ?>"
+            data-description="<?= $variables['purchasing']['product'] ?>"
+            <?= $variables['purchasing']['out'] ?>
+            data-label="<?= $variables['purchasing']['label'] ?>">
+    </script>
+</form>

@@ -158,7 +158,7 @@ class RBKmoneyAdmin
      *
      * @return void
      */
-    public function setRecurrent($value)
+    private function setRecurrent($value)
     {
         $param = $this->connection->escape(trim($value));
 
@@ -260,6 +260,17 @@ class RBKmoneyAdmin
 
         $this->setData($data);
         $this->doData();
+    }
+
+    /**
+     * @return void
+     */
+    public function deleteRecurrent()
+    {
+        $recurrentId = getRequest('recurrentId');
+        $this->connection->queryResult("DELETE FROM `module_rbkmoney_recurrent` WHERE `id` = '$recurrentId'");
+
+        $this->redirect($this->module->pre_lang . '/admin/RBKmoney/page_recurrent/');
     }
 
     /**

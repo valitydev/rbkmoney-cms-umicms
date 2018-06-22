@@ -53,6 +53,7 @@ class rbkmoneyPayment extends payment
     public function __construct(iUmiObject $object, $order = null)
     {
         parent::__construct($object, $order);
+
         $this->connection = ConnectionPool::getInstance()->getConnection();
 
         foreach ($this->connection->queryResult('SELECT * FROM `module_rbkmoney_settings`') as $setting) {
@@ -220,7 +221,7 @@ class rbkmoneyPayment extends payment
             $discountPercent = $this->order->getDiscountPercent();
 
             if (0 !== $discountPercent) {
-                $discount = $item->getActualPrice() / $discountPercent;
+                $discount = $item->getActualPrice() * ($discountPercent / 100);
                 $price = $item->getActualPrice() - $discount;
             } else {
                 $price = $item->getActualPrice();

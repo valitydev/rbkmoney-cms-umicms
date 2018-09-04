@@ -57,26 +57,15 @@ class Client implements ClientInterface
     private $url;
 
     /**
-     * @param      $apiKey
-     * @param      $shopId
-     * @param      $url
+     * @param string $apiKey
+     * @param string $shopId
+     * @param string $url
      */
     public function __construct($apiKey, $shopId, $url)
     {
         $this->apiKey = $apiKey;
         $this->shopId = $shopId;
         $this->url = $url;
-
-        $this->setHeaders();
-    }
-
-    /**
-     * Устанавливает хедеры
-     *
-     * @return void
-     */
-    private function setHeaders()
-    {
         $this->headers = [
             self::CONTENT_TYPE,
             self::AUTHORIZATION . $this->apiKey,

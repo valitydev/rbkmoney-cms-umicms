@@ -190,7 +190,7 @@ class RBKmoneyAdmin
      */
     protected function getCustomer($id)
     {
-        $customer = $this->connection->queryResult("SELECT `user_id`, `status` FROM `module_rbkmoney_recurrent_customers` WHERE `id` = '$id'");
+        $customer = $this->connection->queryResult('SELECT `user_id`, `status` FROM `module_rbkmoney_recurrent_customers` WHERE `id` = ' . (int)$id);
 
         return $customer->getIterator()->current();
     }

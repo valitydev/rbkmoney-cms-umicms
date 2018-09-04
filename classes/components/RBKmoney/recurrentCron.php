@@ -138,6 +138,7 @@ class RecurrentController
         $orderItem = orderItem::create($payment['item_id']);
         $orderItem->setTaxRateId($payment['vat_rate']);
         $orderItem->setActualPrice($payment['amount']);
+        // amount в UMI - это количество
         $orderItem->setAmount(1);
 
         $order = order::create();

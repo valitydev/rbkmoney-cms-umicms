@@ -69,7 +69,7 @@ class Client implements ClientInterface
         $this->headers = [
             self::CONTENT_TYPE,
             self::AUTHORIZATION . $this->apiKey,
-            self::REQUEST_ID . $this->shopId,
+            self::REQUEST_ID . md5(uniqid(rand(), true)),
         ];
     }
 
